@@ -18,3 +18,9 @@ CREATE TABLE owners (
     age             integer,
     PRIMARY KEY(id)
 );
+
+CREATE TABLE species (
+    id              integer GENERATED ALWAYS AS IDENTITY,
+    name            VARCHAR(40),
+    PRIMARY KEY(id)
+);
