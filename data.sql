@@ -21,4 +21,8 @@ VALUES  ('Sam Smith', 34),
         ('Bob', 45),
         ('Melody Pond', 77),
         ('Dean Winchester', 14),
-        ('Jodie Whittaker', 38),
+        ('Jodie Whittaker', 38);
+
+INSERT INTO species (name) 
+VALUES  ('Pokemon'),
+        ('Digimon');
