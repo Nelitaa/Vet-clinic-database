@@ -26,3 +26,14 @@ VALUES  ('Sam Smith', 34),
 INSERT INTO species (name) 
 VALUES  ('Pokemon'),
         ('Digimon');
+
+/*TRANSACTION 5: Modify your inserted animals so it includes the species_id value:
+-If the name ends in "mon" it will be Digimon 
+-All other animals are Pokemon*/
+BEGIN;
+UPDATE animals SET species_id = (SELECT id FROM species WHERE name = 'Digimon') WHERE name LIKE '%mon%';
+SELECT * FROM animals;
+UPDATE animals SET species_id = (SELECT id FROM species WHERE name = 'Pokemon') WHERE species_id IS NULL;
+SELECT * FROM animals;
+COMMIT;
+SELECT * FROM animals;
