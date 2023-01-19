@@ -41,4 +41,39 @@ SELECT * FROM animals;
 ROLLBACK;
 SELECT * FROM animals;
 
-/*TRANSACTION 4:*/
+/*TRANSACTION 4:
+Inside a transaction:
+Delete all animals born after Jan 1st, 2022.
+Create a savepoint for the transaction.
+Update all animals' weight to be their weight multiplied by -1.
+Rollback to the savepoint
+Update all animals' weights that are negative to be their weight multiplied by -1.
+Commit transaction*/
+
+BEGIN;
+DELETE FROM animals WHERE date_of_birth > '2022-01-01';
+SELECT * FROM animals;
+SAVEPOINT savepoint1;
+UPDATE animals SET weight_kg = weight_kg * -1;
+SELECT * FROM animals;
+ROLLBACK TO savepoint1;
+SELECT * FROM animals;
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+SELECT * FROM animals;
+COMMIT;
+SELECT * FROM animals;
+
+/*Write queries to answer the following questions:
+1. How many animals are there?
+2. How many animals have never tried to escape?
+3. What is the average weight of animals?
+4. Who escapes the most, neutered or not neutered animals?
+5 What is the minimum and maximum weight of each type of animal?
+6. What is the average number of escape attempts per animal type of those born between 1990 and 2000?*/
+
+SELECT COUNT(*) FROM animals;
+SELECT COUNT(*) FROM animals WHERE escape_attempts = 0;
+SELECT AVG(weight_kg) FROM animals;
+SELECT neutered, MAX(escape_attempts) FROM animals GROUP BY neutered;
+SELECT species, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
+SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
