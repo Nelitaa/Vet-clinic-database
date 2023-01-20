@@ -4,14 +4,10 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
-  - [Install](#install)
   - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -55,6 +51,7 @@ In order to run this project you need:
 ````sh
  PostgreSQL server
  psql
+````
 
 ### Setup
 
@@ -73,7 +70,7 @@ To run the project, execute the following command:
   psql
   CREATE DATABASE vet_clinic
   psql vet_clinic
-```
+````
 
 - Use [schema.sql](./schema.sql) to create all tables.
 - Use [data.sql](./data.sql) to populate tables with sample data.
@@ -93,7 +90,6 @@ To run the project, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[add_"join_table"_for_visits]**
 - [ ] **[database_performance_audit]**
 - [ ] **[add_database_schema_diagram]**
 
