@@ -43,3 +43,9 @@ CREATE TABLE specializations (
     species_id          integer REFERENCES species(id),
     vets_id             integer REFERENCES vets(id)
 );
+
+CREATE TABLE visits (
+    animals_id          integer REFERENCES animals(id),
+    vets_id             integer REFERENCES vets(id),
+    date_of_visit       date
+);
