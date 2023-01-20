@@ -48,10 +48,10 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-````sh
+```sh
  PostgreSQL server
  psql
-````
+```
 
 ### Setup
 
@@ -60,7 +60,7 @@ Clone this repository to your desired folder:
 ```sh
   cd my-folder
   git@github.com:Nelitaa/Vet-clinic-database.git
-````
+```
 
 ### Usage
 
@@ -70,7 +70,7 @@ To run the project, execute the following command:
   psql
   CREATE DATABASE vet_clinic
   psql vet_clinic
-````
+```
 
 - Use [schema.sql](./schema.sql) to create all tables.
 - Use [data.sql](./data.sql) to populate tables with sample data.
