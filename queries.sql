@@ -9,60 +9,6 @@ SELECT * FROM animals WHERE neutered IS TRUE;
 SELECT * FROM animals WHERE name <> 'Gabumon';
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 and 17.3;
 
-
-/*TRANSACTIONS:
-/*TRANSACTION 1: Inside a transaction update the animals table by setting the species column to unspecified. Verify that change was made. Then roll back the change and verify that the species columns went back to the state before the transaction.*/
-BEGIN;
-UPDATE animals SET species = 'unspecified';
-SELECT * FROM animals;
-ROLLBACK;
-SELECT * FROM animals;
-
-/*TRANSACTION 2: 
-Inside a transaction:
-Update the animals table by setting the species column to digimon for all animals that have a name ending in mon.
-Update the animals table by setting the species column to pokemon for all animals that don't have species already set.
-Commit the transaction.
-Verify that change was made and persists after commit.*/
-
-BEGIN;
-UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon%';
-SELECT * FROM animals;
-UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
-SELECT * FROM animals;
-COMMIT;
-SELECT * FROM animals;
-
-/*TRANSACTION 3:
-Inside a transaction delete all records in the animals table, then roll back the transaction.After the rollback verify if all records in the animals table still exists.*/
-BEGIN;
-DELETE FROM animals;
-SELECT * FROM animals;
-ROLLBACK;
-SELECT * FROM animals;
-
-/*TRANSACTION 4:
-Inside a transaction:
-Delete all animals born after Jan 1st, 2022.
-Create a savepoint for the transaction.
-Update all animals' weight to be their weight multiplied by -1.
-Rollback to the savepoint
-Update all animals' weights that are negative to be their weight multiplied by -1.
-Commit transaction*/
-
-BEGIN;
-DELETE FROM animals WHERE date_of_birth > '2022-01-01';
-SELECT * FROM animals;
-SAVEPOINT savepoint1;
-UPDATE animals SET weight_kg = weight_kg * -1;
-SELECT * FROM animals;
-ROLLBACK TO savepoint1;
-SELECT * FROM animals;
-UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
-SELECT * FROM animals;
-COMMIT;
-SELECT * FROM animals;
-
 /*Write queries to answer the following questions:
 1. How many animals are there?
 2. How many animals have never tried to escape?
@@ -77,3 +23,20 @@ SELECT AVG(weight_kg) FROM animals;
 SELECT neutered, MAX(escape_attempts) FROM animals GROUP BY neutered;
 SELECT species, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
+
+/*Write queries (using JOIN) to answer the following questions:
+1. What animals belong to Melody Pond?
+2. List of all animals that are pokemon (their type is Pokemon).
+3. List all owners and their animals, remember to include those that don't own any animal.
+4. How many animals are there per species?
+5. List all Digimon owned by Jennifer Orwell.
+6. List all animals owned by Dean Winchester that haven't tried to escape.
+7. Who owns the most animals?*/
+
+SELECT name FROM animals JOIN owners ON animals.owner_id = owners.id WHERE owners.full_name = 'Melody Pond';
+SELECT animals.name FROM animals JOIN species ON animals.species_id = species.id WHERE species.name = 'Pokemon';
+SELECT owners.full_name, animals.name FROM owners LEFT JOIN animals ON owners.id = animals.owner_id;
+SELECT species.name, COUNT(animals.name) FROM animals JOIN species ON animals.species_id = species.id GROUP BY species.id;
+SELECT animals.name FROM animals JOIN owners ON animals.owner_id = owners.id JOIN species ON animals.species_id = species.id WHERE species.name = 'Digimon' AND owners.full_name = 'Jennifer Orwell';
+SELECT animals.name FROM animals JOIN owners ON animals.owner_id = owners.id WHERE owners.full_name = 'Dean Winchester' AND animals.escape_attempts = 0;
+SELECT owners.full_name, COUNT(animals.name) FROM animals JOIN owners ON animals.owner_id = owners.id GROUP BY owners.full_name ORDER BY COUNT DESC LIMIT 1;
