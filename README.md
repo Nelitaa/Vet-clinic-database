@@ -9,7 +9,6 @@
   - [Prerequisites](#prerequisites)
   - [Usage](#usage)
 - [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
@@ -85,12 +84,6 @@ To run the project, execute the following command:
 - GitHub: [@Nelitaa](https://github.com/Nelitaa)
 - Twitter: [@MarianelaMunoz\_](https://twitter.com/MarianelaMunoz_)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/marianela-muñoz-gutierrez/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🔭 Future Features <a name="future-features"></a>
-
-- [ ] **[add_database_schema_diagram]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
