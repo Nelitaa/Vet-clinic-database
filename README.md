@@ -90,7 +90,6 @@ To run the project, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[database_performance_audit]**
 - [ ] **[add_database_schema_diagram]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
