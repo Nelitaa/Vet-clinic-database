@@ -14,9 +14,9 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 [Vet_clinic_database] <a name="about-project"></a>
+# 📖 Vet clinic database <a name="about-project"></a>
 
-**[Vet_clinic_database]** is a database project, I use a relational database to create the data structure for a vet clinic. I have created a complete database with data about animals, animals' owners, clinic employees and visits.
+**Vet clinic database** is a database project, I use a relational database to create the data structure for a vet clinic. I have created a complete database with data about animals, animals' owners, clinic employees, and visits.
 
 Apart from building data structure, I required SQL queries to answer specific questions.
 
@@ -103,7 +103,7 @@ If you like this project give us a ⭐️!.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse.
+I want to thank Microverse.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
